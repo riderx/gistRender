@@ -45,6 +45,7 @@ var HTMLPreview = {
 			return false;
 		}
 		location.href = HTMLPreview.file() + '?no-render=true';
+		HTMLPreview.loading('RAW file');
 		return false;
 	},
 	getGistHtmlFile() {
@@ -180,6 +181,16 @@ var HTMLPreview = {
 		return false;
 	},
 
+	loading: function (opt) {
+		let loadvalue = 0;
+		let inerval = setInterval(function () {
+			if (loadvalue >= 100) {
+				clearInterval(inerval);
+			}
+			HTMLPreview.previewform.innerHTML = `<p>Loading ${opt}...</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${loadvalue}" aria-valuemin="0" aria-valuemax="100" style="width: ${loadvalue}%"></div></div>`;
+			loadvalue += 1;
+		}, 20);
+	},
 	init: function () {
 		HTMLPreview.previewform.onsubmit = HTMLPreview.submitform;
 		if (HTMLPreview.file()) {
@@ -188,14 +199,7 @@ var HTMLPreview = {
 				return false;
 			} else {
 				HTMLPreview.send(HTMLPreview.raw(), 'loadHTML');
-				let loadvalue = 0;
-				let inerval = setInterval(function () {
-					if (loadvalue >= 100) {
-						clearInterval(inerval);
-					}
-					HTMLPreview.previewform.innerHTML = `<p>Loading...</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${loadvalue}" aria-valuemin="0" aria-valuemax="100" style="width: ${loadvalue}%"></div></div>`;
-					loadvalue += 1;
-				}, 20);
+				HTMLPreview.loading();
 			}
 		}
 	}
