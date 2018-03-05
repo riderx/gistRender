@@ -187,8 +187,15 @@ var HTMLPreview = {
 				HTMLPreview.getGistHtmlFile(HTMLPreview.file());
 				return false;
 			} else {
-				HTMLPreview.previewform.innerHTML = '<p>Loading...</p>';
 				HTMLPreview.send(HTMLPreview.raw(), 'loadHTML');
+				let loadvalue = 0;
+				let inerval = setInterval(function () {
+					if (loadvalue >= 100) {
+						clearInterval(inerval);
+					}
+					HTMLPreview.previewform.innerHTML = `<p>Loading...</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${loadvalue}" aria-valuemin="0" aria-valuemax="100" style="width: ${loadvalue}%"></div></div>`;
+					loadvalue += 1;
+				}, 20);
 			}
 		}
 	}
