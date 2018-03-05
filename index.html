@@ -6,7 +6,7 @@
   <meta http-equiv='Content-Type' content='text/html; charset=utf8'/>
   <meta name='apple-mobile-web-app-capable' content='yes'/>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <style type="text/css">
     .container {
       width: auto;
@@ -19,30 +19,25 @@
 <div class="container">
     <h2>GitHub, Gist &amp; BitBucket HTML Preview</h2>
     <p class="lead">If you provide repo link, it will preview <ins>.index.html</ins>  or preview first <ins>html</ins> file otherwise <ins>the repos link</ins> as default.</p>
-    <form id="previewform" action="">
-	<div class="form-inline" role="form">
-      <div class="form-group">
-        <label for="gist_id">LINK</label>
-	<input type="url" id="file" value="" placeholder="e.g. https://github.com/user/repo/" size="60" autofocus>
-	<button id="submit" id="gist_id" class="btn btn-primary">Submit</button>
-      </div>
+    <form id="previewform" action="">    
+	    <label for="basic-url">Your Link</label>
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="basic-addon3">https://riderx.github.io/gistRender/?</span>
+		  </div>
+		  <input type="url" id="file" class="form-control" id="basic-url" placeholder="e.g. https://github.com/user/repo/" aria-describedby="basic-addon3" autofocus>
+		  <button id="submit" id="gist_id" class="btn btn-primary">Submit</button>
+		</div>
+	    
 	<br/><br/>
-	<p>or prepend to the URL: <strong>https://riderx.github.io/gistRender/?</strong>https://github.com/twbs/bootstrap/blob/gh-pages/2.3.2/index.html</p>
+	<p>or prepend to the URL: <strong>https://riderx.github.io/gistRender/?</strong></p>
 	<p>or use this bookmarklet while browsing GitHub or BitBucket: <a href="javascript:void('https://riderx.github.io/gistRender/'==window.location?alert('Drag me to your bookmarks bar!'):window.location='https://riderx.github.io/gistRender/?'+window.location)"><strong>HTMLPreview</strong></a></p>
+	<p>* On Bitbucket only link to page.html work, it can't auto find it for now</p>
 	<p id="footer">Developed by <a href="https://github.com/niutech">niu tech</a> | Updated by <a href="https://github.com/riderx">Riderx</a> | Contribute on <a href="https://github.com/riderx/gistRender">GitHub</a></p>
 
-    </div>
 </form>
     <a href="https://riderx.github.io/gistRender"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
   </div>
-	
-<!-- 	<form id="previewform" action="">
-		<h1>GitHub, Gist &amp; BitBucket HTML Preview</h1>
-		<p>Enter URL of the HTML file to preview: <input type="url" id="file" value="" placeholder="e.g. https://github.com/user/repo/blob/master/index.html" size="60" autofocus> <input type="submit" value="&raquo;"></p>
-		<p>or prepend to the URL: <strong>https://riderx.github.io/gistRender/?</strong>https://github.com/twbs/bootstrap/blob/gh-pages/2.3.2/index.html</p>
-		<p>or use this bookmarklet while browsing GitHub or BitBucket: <a href="javascript:void('https://riderx.github.io/gistRender/'==window.location?alert('Drag me to your bookmarks bar!'):window.location='https://riderx.github.io/gistRender/?'+window.location)"><strong>HTMLPreview</strong></a></p>
-		<p id="footer">Developed by <a href="https://github.com/niutech">niu tech</a> | Updated by <a href="https://github.com/riderx">Riderx</a> | Contribute on <a href="https://github.com/riderx/gistRender">GitHub</a></p>
-	</form> -->
 	<script src="htmlpreview.js"></script>
 	<script>HTMLPreview.init();</script>
 </body>
