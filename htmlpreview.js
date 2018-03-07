@@ -1,6 +1,7 @@
 var HTMLPreview = {
 
 	content: '',
+	interval: null,
 
 	previewform: document.getElementById('previewform'),
 
@@ -183,14 +184,14 @@ var HTMLPreview = {
 
 	loading: function (opt) {
 		let loadvalue = 0;
-		let interval = setInterval(function () {
+		HTMLPreview.interval = setInterval(function () {
 			if (loadvalue >= 100) {
-				clearInterval(interval);
+				clearInterval(HTMLPreview.interval);
 			}
 			if (HTMLPreview.previewform) {
 				HTMLPreview.previewform.innerHTML = `<p>Loading ${opt}...</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${loadvalue}" aria-valuemin="0" aria-valuemax="100" style="width: ${loadvalue}%"></div></div>`;	
 			} else {
-				clearInterval(inerval);
+				clearInterval(HTMLPreview.interval);
 			}
 			loadvalue += 1;
 		}, 20);
