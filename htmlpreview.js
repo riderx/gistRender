@@ -59,14 +59,14 @@ var HTMLPreview = {
 			var link = '';
  			if(HTMLPreview.file().indexOf("/tree/") !== -1) {
 				ref = '?ref=' + HTMLPreview.file().split('/tree/').slice(1);
-				link = HTMLPreview.file().split('/').slice(-3).join('/');
+				link = HTMLPreview.file().split('/').slice(-4).slice(0,2).join('/');
 			} else if(HTMLPreview.file().indexOf("/blob/") !== -1) {
 				ref = '?ref=' + HTMLPreview.file().split('/blob/').slice(1);
-				link = HTMLPreview.file().split('/').slice(-3).join('/');
+				link = HTMLPreview.file().split('/').slice(-4).slice(0,2).join('/');
 			} else {
 				link = HTMLPreview.file().split('/').slice(-2).join('/');
 			}
-			console.log(link);
+			console.log('link:',link);
 			jsonGist = HTMLPreview.getGistList('https://api.github.com/repos/' + link + '/contents/' + ref);
 			HTMLPreview.findFile(jsonGist);
 		} else {
