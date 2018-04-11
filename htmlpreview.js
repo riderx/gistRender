@@ -55,7 +55,18 @@ var HTMLPreview = {
 			jsonGist = HTMLPreview.getGistList('https://api.github.com/gists/' + HTMLPreview.file().split('/').slice(-1)[0]).files;
 			HTMLPreview.findFile(jsonGist);
 		} else if (HTMLPreview.file().indexOf('//github.com/') > 0) {
-			jsonGist = HTMLPreview.getGistList('https://api.github.com/repos/' + HTMLPreview.file().split('/').slice(-2).join('/') + '/contents/');
+			var ref = '';
+			var link = '';
+ 			if(HTMLPreview.file().indexOf("/tree/") !== -1) {
+				ref = '?ref=' + HTMLPreview.file().split('/tree/').slice(1);
+				link = HTMLPreview.file().split('/').slice(-3).join('/');
+			} else if(HTMLPreview.file().indexOf("/blob/") !== -1) {
+				ref = '?ref=' + HTMLPreview.file().split('/blob/').slice(1);
+				link = HTMLPreview.file().split('/').slice(-3).join('/');
+			} else {
+				link = HTMLPreview.file().split('/').slice(-2).join('/');
+			}
+			jsonGist = HTMLPreview.getGistList('https://api.github.com/repos/' + link + '/contents/' + ref);
 			HTMLPreview.findFile(jsonGist);
 		} else {
 			console.log('Can\'t render this link, than\'s not an html file or git / gist repos');
