@@ -58,10 +58,10 @@ var HTMLPreview = {
 			var ref = '';
 			var link = '';
  			if(HTMLPreview.file().indexOf("/tree/") !== -1) {
-				ref = '?ref=' + HTMLPreview.file().split('/tree/').slice(1)[1];
+				ref = '?ref=' + HTMLPreview.file().split('/tree/')[1];
 				link = HTMLPreview.file().split('/').slice(-4).slice(0,2).join('/');
 			} else if(HTMLPreview.file().indexOf("/blob/") !== -1) {
-				ref = '?ref=' + HTMLPreview.file().split('/blob/').slice(1)[1];
+				ref = '?ref=' + HTMLPreview.file().split('/blob/')[1];
 				link = HTMLPreview.file().split('/').slice(-4).slice(0,2).join('/');
 			} else {
 				link = HTMLPreview.file().split('/').slice(-2).join('/');
