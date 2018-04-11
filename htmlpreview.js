@@ -66,6 +66,7 @@ var HTMLPreview = {
 			} else {
 				link = HTMLPreview.file().split('/').slice(-2).join('/');
 			}
+			console.log(link);
 			jsonGist = HTMLPreview.getGistList('https://api.github.com/repos/' + link + '/contents/' + ref);
 			HTMLPreview.findFile(jsonGist);
 		} else {
